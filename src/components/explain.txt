@@ -1,0 +1,7 @@
+Abnormal:异常报警
+DataManage:数据管理
+EqLayout:设备配置
+EqManage:设备管理
+ManManage:人事管理
+IsData:实时数据
+Video:视频预览

@@ -1,0 +1,123 @@
+{
+    "admin": {
+        "name": "管理员",
+        "general": {
+            "general": {
+                "name": "概况",
+                "title": "使用量",
+                "tab": ["项目名称", "vcpu数量", "磁盘", "内存", "VCPU小时数", "磁盘GB小时数", "内存MB小时"]
+            }
+        },
+        "compute": {
+            "name": "计算",
+            "image": {
+
+            },
+            "instance": {
+                "name": "实例",
+                "title": {},
+                "tab": ["项目", "主机", "名称", "镜像名称", "IP地址", "实例类型", "状态", "任务", "电源状态", "时间", "操作"]
+            },
+            "instancetype": {
+
+            }
+        },
+        "network": {
+            "floatip": {
+
+            },
+            "network": {
+
+            },
+            "router": {
+
+            }
+        },
+        "roll": {
+            "roll": {
+
+            },
+            "rolltype": {
+
+            },
+            "snapshoot": {
+
+            }
+        },
+        "system": {
+            "default": {
+
+            },
+            "metadatadefinition": {
+
+            },
+            "systeminformation": {
+
+            }
+        }
+
+    },
+    "identity": {
+        "applicationcredentials": {
+
+        },
+        "project": {
+
+        },
+        "user": {
+
+        }
+
+
+    },
+    "project": {
+        "compute": {
+            "general": {},
+            "image": {},
+            "instance": {}
+        },
+        "network": {
+            "floatip": {},
+            "network": {},
+            "networktopology": {},
+            "router": {},
+            "securitygroup": {}
+        },
+        "roll": {
+            "roll": {
+
+            },
+            "snapshoot": {
+
+            }
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

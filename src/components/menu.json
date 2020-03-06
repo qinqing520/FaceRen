@@ -1,0 +1,81 @@
+[{
+    "id": 1,
+    "name": "视频预览",
+    "url": "/isvideo"
+}, {
+    "id": 2,
+    "name": "实时数据",
+    "url": "/isdata"
+}, {
+    "id": 3,
+    "name": "异常报警",
+    "url": "/abnormal"
+}, {
+    "id": 4,
+    "name": "人事管理",
+    "submenu": [{
+        "id": 41,
+        "name": "人员信息",
+        "url": "/manmanagemessage"
+    }, {
+        "id": 42,
+        "name": "角色管理",
+        "url": "/manmanageroles"
+    }, {
+        "id": 43,
+        "name": "企业信息",
+        "url": "/manmanagecompany"
+    }]
+}, {
+    "id": 5,
+    "name": "设备管理",
+    "submenu": [{
+        "id": 51,
+        "name": "设备信息",
+        "url": "/eqmanagemessage"
+    }, {
+        "id": 52,
+        "name": "识别记录",
+        "url": "/eqmanagerecord"
+    }, {
+        "id": 53,
+        "name": "设备日志",
+        "url": "/eqmanagelog"
+    }]
+}, {
+    "id": 6,
+    "name": "设备配置",
+    "submenu": [{
+        "id": 61,
+        "name": "人员识别",
+        "url": "/eqLayoutman"
+    }, {
+        "id": 62,
+        "name": "口罩检测",
+        "url": "/eqlayoutmouth"
+    }, {
+        "id": 63,
+        "name": "体温测量",
+        "url": "/eqlayoutheat"
+    }, {
+        "id": 64,
+        "name": "门禁管理",
+        "url": "/eqlayoutdoor"
+    }, {
+        "id": 65,
+        "name": "考勤管理",
+        "url": "/eqlayoutwork"
+    }]
+}, {
+    "id": 7,
+    "name": "数据管理",
+    "submenu": [{
+        "id": 71,
+        "name": "数据存储",
+        "url": "/datamanagedatasave"
+    }, {
+        "id": 72,
+        "name": "数据报表",
+        "url": "/datamanagedatafrom"
+    }]
+}]

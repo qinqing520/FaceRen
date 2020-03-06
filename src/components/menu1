@@ -1,0 +1,866 @@
+[{
+        "id": 1,
+        "name": "项目",
+        "submenu": [{
+                "id": 10,
+                "name": "访问API",
+                "url": "/projectapi"
+            },
+            {
+                "id": 11,
+                "name": "计算",
+                "submenu": [{
+                        "id": 111,
+                        "name": "概括",
+                        "url": "/projectcomputeGeneral"
+                    },
+                    {
+                        "id": 112,
+                        "name": "实例",
+                        "url": "/projectcomputeinstance"
+                    },
+                    {
+                        "id": 113,
+                        "name": "镜像",
+                        "url": "/projectcomputeimage"
+                    }
+                ]
+            },
+            {
+                "id": 12,
+                "name": "卷",
+                "submenu": [{
+                        "id": 121,
+                        "name": "卷",
+                        "url": "/projectrollroll"
+                    },
+                    {
+                        "id": 122,
+                        "name": "快照",
+                        "url": "/projectrollsnapshoot"
+                    }
+                ]
+            },
+            {
+                "id": 13,
+                "name": "网络",
+                "submenu": [{
+                        "id": 131,
+                        "name": "网络拓扑",
+                        "url": "/projectnetworknetworktopology"
+                    },
+                    {
+                        "id": 132,
+                        "name": "网络",
+                        "url": "/projectnetworknetwork"
+                    },
+                    {
+                        "id": 133,
+                        "name": "路由",
+                        "url": "/projectnetworkrouter"
+                    },
+                    {
+                        "id": 134,
+                        "name": "安全组",
+                        "url": "/projectnetworksecuritygroup"
+                    },
+                    {
+                        "id": 135,
+                        "name": "浮动IP",
+                        "url": "/projectnetworkfloatIp"
+                    }
+                ]
+            }
+
+        ]
+    }, {
+        "id": 2,
+        "name": "管理员",
+        "submenu": [{
+                "id": 10,
+                "name": "概况",
+                "url": "/admingeneral"
+            },
+            {
+                "id": 21,
+                "name": "计算",
+                "submenu": [{
+                        "id": 211,
+                        "name": "实例",
+                        "url": "/admincomputinstance"
+                    },
+                    {
+                        "id": 112,
+                        "name": "实例类型",
+                        "url": "/admincomputinstancetype"
+                    },
+                    {
+                        "id": 113,
+                        "name": "镜像",
+                        "url": "/admincomputimage"
+                    }
+                ]
+            },
+            {
+                "id": 22,
+                "name": "卷",
+                "submenu": [{
+                        "id": 221,
+                        "name": "卷",
+                        "url": "/adminrollroll"
+                    },
+                    {
+                        "id": 222,
+                        "name": "快照",
+                        "url": "/adminrollsnapshoot"
+                    },
+                    {
+                        "id": 223,
+                        "name": "卷类型",
+                        "url": "/adminrollrolltype"
+                    }
+                ]
+            },
+            {
+                "id": 23,
+                "name": "网络",
+                "submenu": [{
+                        "id": 231,
+                        "name": "网络",
+                        "url": "/adminnetworknetwork"
+                    },
+                    {
+                        "id": 232,
+                        "name": "路由",
+                        "url": "/adminnetworkrouter"
+                    },
+                    {
+                        "id": 233,
+                        "name": "浮动IP",
+                        "url": "/adminnetworkfloatip"
+                    }
+                ]
+            }, {
+                "id": 24,
+                "name": "系统",
+                "submenu": [{
+                        "id": 241,
+                        "name": "默认值",
+                        "url": "/adminsystemdefault"
+                    },
+                    {
+                        "id": 242,
+                        "name": "元数据定义",
+                        "url": "/adminsysyemmetadatadefinition"
+                    },
+                    {
+                        "id": 243,
+                        "name": "系统信息",
+                        "url": "/adminsystemsysteminformation"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "身份管理",
+        "submenu": [{
+                "id": 31,
+                "name": "项目",
+                "url": "/identityproject"
+            },
+            {
+                "id": 32,
+                "name": "用户",
+                "url": "/identityUser"
+            },
+            {
+                "id": 33,
+                "name": "应用程序凭证",
+                "url": "/identityapplicationcredentials"
+
+            }
+
+        ]
+    }
+]
+
+//instance弹框
+  <el-dialog :visible.sync="createDialogVisible"
+                   width="70%"
+                   title="添加虚拟主机">
+
+          <el-row>
+            <el-tabs tab-position="left"
+                     style="height: 70%;">
+              <!-- details模块 -->
+              <el-tab-pane label="详细资料">
+                <el-row>
+                  请提供实例的初始主机名、将部署实例的可用性区域和实例计数。增加计数以创建具有相同设置的多个实例。
+                </el-row>
+                <el-row>
+                  <el-col :span="15">
+                    <el-form>
+                      <el-form-item label="虚拟主机名">
+                        <el-input v-model="createInstanceForm.instanceName"></el-input>
+                      </el-form-item>
+                      <el-form-item label="描述">
+                        <el-input v-model="createInstanceForm.description"></el-input>
+                      </el-form-item>
+                      <el-form-item label="可用时间">
+                        <el-input v-model="createInstanceForm.availabilityZone"
+                                  disabled></el-input>
+                      </el-form-item>
+                      <el-form-item label="数量">
+                        <el-input v-model="createInstanceForm.count"></el-input>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                  <el-col :span="9">
+                  </el-col>
+                </el-row>
+              </el-tab-pane>
+              <!-- source模块 -->
+              <el-tab-pane label="来源">
+                <el-row>
+                  实例源是用于创建实例的模板。可以使用映像、实例快照(映像快照)、卷或卷快照(如果启用)。您还可以通过创建一个新卷来选择使用持久存储。
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
+                    <el-form>
+                      <el-form-item label="选择引导源">
+                        <el-select v-model="createInstanceForm.selectSource">
+                          <el-option label="系统镜像"
+                                     value="Image"></el-option>
+                          <el-option label="虚拟主机系统快照"
+                                     value="Instance Snapshot"></el-option>
+                          <el-option label="系统卷"
+                                     value="Volume"></el-option>
+                          <el-option label="卷系统快照"
+                                     value="Volume Snapshot"></el-option>
+                        </el-select>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                  <el-col :span="11">
+                    <el-form>
+                      <el-form-item label="创建新的卷 : ">
+                        <el-switch v-model="createInstanceForm.yesNo"
+                                   active-text="Yes"
+                                   inactive-text="No"
+                                   width="60">
+                        </el-switch>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                </el-row>
+                <el-row v-if="createInstanceForm.yesNo">
+                  <el-col :span="12">
+                    <el-form>
+                      <el-form-item label="卷大小(GB) : ">
+                        <el-input-number v-model="createInstanceForm.VolumeSize"
+                                         controls-position="right"
+                                         @change="handleChange"
+                                         :min="1">
+                        </el-input-number>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                  <el-col :span="11">
+                    <el-form>
+                      <el-form-item label="删除卷在虚拟主机删除 : ">
+                        <el-switch v-model="createInstanceForm.deleteVolume"
+                                   active-text="Yes"
+                                   inactive-text="No"
+                                   width="60"
+                                   heigth="40">
+                        </el-switch>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-row>
+                    <h3>分配</h3>
+                  </el-row>
+                  <el-table :data="createInstanceForm.source.tableData"
+                            style="width: 100%">
+                    <el-table-column prop="name"
+                                     label="名字"
+                                     width="180">
+                    </el-table-column>
+                    <el-table-column prop="updated"
+                                     label="更新时间"
+                                     width="180">
+                    </el-table-column>
+                    <el-table-column prop="size"
+                                     label="大小">
+                    </el-table-column>
+                    <el-table-column prop="type"
+                                     label="类型">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="谁可见">
+                    </el-table-column>
+                  </el-table>
+                </el-row>
+              </el-tab-pane>
+              <!-- flavor模块 -->
+              <el-tab-pane label="主机模板">
+                <el-row>
+                  主机模板管理实例的计算、内存和存储容量的大小。
+                </el-row>
+                <el-row>
+                  <el-row>
+                    <h3>分配</h3>
+                  </el-row>
+                  <el-table :data="createInstanceForm.flavor.tableData"
+                            style="width: 100%">
+                    <el-table-column prop="name"
+                                     label="名字">
+                    </el-table-column>
+                    <el-table-column prop="updated"
+                                     label="处理器核数">
+                    </el-table-column>
+                    <el-table-column prop="size"
+                                     label="RAM">
+                    </el-table-column>
+                    <el-table-column prop="type"
+                                     label="总磁盘">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="根磁盘">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="短磁盘">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="公开">
+                    </el-table-column>
+                  </el-table>
+                </el-row>
+              </el-tab-pane>
+              <el-tab-pane label="网络">
+                <el-row>
+                  网络为云中的实例提供通信通道。
+                </el-row>
+                <el-row>
+                  <el-row>
+                    <h3>分配</h3>
+                  </el-row>
+                  <el-table :data="createInstanceForm.network.tableData"
+                            style="width: 100%">
+                    <el-table-column prop="name"
+                                     label="网络">
+                    </el-table-column>
+                    <el-table-column prop="updated"
+                                     label="子网相关联">
+                    </el-table-column>
+                    <el-table-column prop="size"
+                                     label="共享">
+                    </el-table-column>
+                    <el-table-column prop="type"
+                                     label="管理员状态">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="状态">
+                    </el-table-column>
+                  </el-table>
+                </el-row>
+              </el-tab-pane>
+              <el-tab-pane label="元数据">
+                <el-row>此步骤允许您向实例添加元数据项。</el-row>
+                <el-row :gutter="20">
+                  <el-row>可以通过将项从左列移动到右列来指定资源元数据。在左侧列中有来自Glance metadata Catalog的元数据定义。使用“Custom”选项添加元数据和您选择的键。</el-row>
+                  <el-col :span="11">
+                    <div class="AvTable">
+                      <div class="AvTableFiliter">
+                        <span>
+                          <h3>可用数据:</h3>
+                        </span>
+                        <span>
+                          <el-input placeholder="筛选"
+                                    v-model="createInstanceForm.metadata.Avdata"
+                                    size="medium"></el-input>
+                        </span>
+                      </div>
+                      <div class="AvTableCustom">
+                        <span>
+                          <el-input v-model="createInstanceForm.metadata.Avdata"
+                                    placeholder="Custom"
+                                    size="medium">
+                            <el-button slot="append"
+                                       icon="el-icon-plus"></el-button>
+                          </el-input>
+                        </span>
+                      </div>
+                      <div class="AvTableMessage">
+                        没有可用的元数据
+                      </div>
+                    </div>
+                  </el-col>
+                  <el-col :span="11">
+                    <div class="AvTable">
+                      <div class="AvTableFiliter">
+                        <span>
+                          <h3>现有的元数据:</h3>
+                        </span>
+                        <span>
+                          <el-input placeholder="筛选"
+                                    v-model="createInstanceForm.metadata.Avdata"
+                                    size="medium"></el-input>
+                        </span>
+                      </div>
+                      <div class="AvTableCustom">
+                        <span>123</span>
+                        <span>
+                          <el-input v-model="createInstanceForm.metadata.Avdata"
+                                    placeholder="Custom"
+                                    size="medium">
+                            <el-button slot="append"
+                                       icon="el-icon-minus"></el-button>
+                          </el-input>
+                        </span>
+                      </div>
+                      <div class="AvTableMessage">
+                        没有现有的元数据
+                      </div>
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-card style="background-color: hsl(0, 0%, 96%) border=1px #eee solid; ">
+                    单击每个项目以获取其描述。
+                  </el-card>
+                </el-row>
+              </el-tab-pane>
+            </el-tabs>
+          </el-row>
+          <span slot="footer"
+                class="dialog-footer">
+            <el-button @click="createDialogVisible = false">取 消</el-button>
+            <el-button type="primary"
+                       @click="createInstance">确 定</el-button>
+          </span>
+        </el-dialog>
+
+
+
+           <!-- source模块 -->
+              <el-tab-pane label="来源">
+                <el-row>
+                  实例源是用于创建实例的模板。可以使用映像、实例快照(映像快照)、卷或卷快照(如果启用)。您还可以通过创建一个新卷来选择使用持久存储。
+                </el-row>
+                <el-row>
+                  <el-col :span="12">
+                    <el-form>
+                      <el-form-item label="选择引导源">
+                        <el-select v-model="createInstanceForm.selectSource">
+                          <el-option label="系统镜像"
+                                     value="Image"></el-option>
+                          <el-option label="虚拟主机系统快照"
+                                     value="Instance Snapshot"></el-option>
+                          <el-option label="系统卷"
+                                     value="Volume"></el-option>
+                          <el-option label="卷系统快照"
+                                     value="Volume Snapshot"></el-option>
+                        </el-select>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                  <el-col :span="11">
+                    <el-form>
+                      <el-form-item label="创建新的卷 : ">
+                        <el-switch v-model="createInstanceForm.yesNo"
+                                   active-text="Yes"
+                                   inactive-text="No"
+                                   width="60">
+                        </el-switch>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                </el-row>
+                <el-row v-if="createInstanceForm.yesNo">
+                  <el-col :span="12">
+                    <el-form>
+                      <el-form-item label="卷大小(GB) : ">
+                        <el-input-number v-model="createInstanceForm.VolumeSize"
+                                         controls-position="right"
+                                         @change="handleChange"
+                                         :min="1">
+                        </el-input-number>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                  <el-col :span="11">
+                    <el-form>
+                      <el-form-item label="删除卷在虚拟主机删除 : ">
+                        <el-switch v-model="createInstanceForm.deleteVolume"
+                                   active-text="Yes"
+                                   inactive-text="No"
+                                   width="60"
+                                   heigth="40">
+                        </el-switch>
+                      </el-form-item>
+                    </el-form>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-row>
+                    <h3>分配</h3>
+                  </el-row>
+                  <el-table :data="createInstanceForm.source.tableData"
+                            style="width: 100%">
+                    <el-table-column prop="name"
+                                     label="名字"
+                                     width="180">
+                    </el-table-column>
+                    <el-table-column prop="updated"
+                                     label="更新时间"
+                                     width="180">
+                    </el-table-column>
+                    <el-table-column prop="size"
+                                     label="大小">
+                    </el-table-column>
+                    <el-table-column prop="type"
+                                     label="类型">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="谁可见">
+                    </el-table-column>
+                  </el-table>
+                </el-row>
+              </el-tab-pane>
+              <!-- flavor模块 -->
+              <el-tab-pane label="主机模板">
+                <el-row>
+                  主机模板管理实例的计算、内存和存储容量的大小。
+                </el-row>
+                <el-row>
+                  <el-row>
+                    <h3>分配</h3>
+                  </el-row>
+                  <el-table :data="createInstanceForm.flavor.tableData"
+                            style="width: 100%">
+                    <el-table-column prop="name"
+                                     label="名字">
+                    </el-table-column>
+                    <el-table-column prop="updated"
+                                     label="处理器核数">
+                    </el-table-column>
+                    <el-table-column prop="size"
+                                     label="RAM">
+                    </el-table-column>
+                    <el-table-column prop="type"
+                                     label="总磁盘">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="根磁盘">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="短磁盘">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="公开">
+                    </el-table-column>
+                  </el-table>
+                </el-row>
+              </el-tab-pane>
+              <!-- 网络 -->
+              <el-tab-pane label="网络">
+                <el-row>
+                  网络为云中的实例提供通信通道。
+                </el-row>
+                <el-row>
+                  <el-row>
+                    <h3>分配</h3>
+                  </el-row>
+                  <el-table :data="createInstanceForm.network.tableData"
+                            style="width: 100%">
+                    <el-table-column prop="name"
+                                     label="网络">
+                    </el-table-column>
+                    <el-table-column prop="updated"
+                                     label="子网相关联">
+                    </el-table-column>
+                    <el-table-column prop="size"
+                                     label="共享">
+                    </el-table-column>
+                    <el-table-column prop="type"
+                                     label="管理员状态">
+                    </el-table-column>
+                    <el-table-column prop="visibility"
+                                     label="状态">
+                    </el-table-column>
+                  </el-table>
+                </el-row>
+              </el-tab-pane>
+
+//项目下面的概况
+  <template>
+  <div>
+
+    <el-card class="compute_card">
+      <el-row>
+        <el-col class="compute_heard">
+          <span>计算</span>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20"
+              class="compute_data">
+        <el-col :span="8">
+          <iframe src="http://192.168.106.45:3000/d/WToXLr-Wk/controller_cpu?orgId=1&refresh=10s"
+                  width="50%"
+                  frameborder="0"
+                  id="iframe_cpu"></iframe>
+          <span>CPU利用率</span>
+
+        </el-col>
+        <el-col :span="8">
+          <iframe src="http://192.168.106.45:3000/d/WToXLr-Wk/controller_cpu?orgId=1&refresh=10s"
+                  width="50%"
+                  frameborder="0"
+                  id="iframe_memory"></iframe>
+          <span>内存利用率</span>
+
+        </el-col>
+        <el-col :span="8">
+          <iframe src="http://192.168.106.45:3000/d/WToXLr-Wk/controller_cpu?orgId=1&refresh=10s"
+                  width="50%"
+                  frameborder="0"
+                  id="iframe_disk"></iframe>
+          <span>磁盘利用率</span>
+        </el-col>
+      </el-row>
+      <el-row class="UsageTable">
+        <el-col class="UsageAmount"><span>使用量</span></el-col>
+        <el-row>
+          <el-table style="width: 100%"
+                    stripe
+                    border>
+            <el-table-column label="实例名称">
+            </el-table-column>
+            <el-table-column label="vcpu数量">
+            </el-table-column>
+            <el-table-column label="磁盘">
+            </el-table-column>
+          </el-table>
+
+        </el-row>
+
+      </el-row>
+
+    </el-card>
+  </div>
+</template>
+<script>
+export default {
+  data () {
+    return {
+
+    }
+  }, mounted () {
+    // document.getElementById("iframe_cpu").load(function())
+    // console.log(document.getElementById('iframe_cpu').style.backgroundColor = "red")
+    // var x = document.getElementById('iframe_cpu').contentWindow.document.getElementById('container');
+    // x.style.width = "100%";
+    // x.style.height = "100%";
+    // console.log(document.getElementById("iframe_cpu").contentWindow.document.getElementsByTagName("div"))
+    // document.getElementsByTagName
+  }
+}
+</script>
+
+<style lang="less" scoped>
+.compute_card {
+  overflow: hidden;
+  margin-top: 10px;
+  background-color: hsl(220, 23%, 97%);
+}
+.compute_heard {
+  span {
+    font-size: 24px;
+    line-height: 80px;
+  }
+  z-index: 999;
+  position: relative;
+  background-color: hsl(220, 23%, 97%);
+  top: -21px;
+  height: 100px;
+}
+.compute_data {
+  position: relative;
+  .el-col {
+    overflow: hidden;
+    height: 300px;
+  }
+  #iframe_cpu,
+  #iframe_memory,
+  #iframe_disk {
+    width: 436px;
+    height: 436px;
+    position: absolute;
+  }
+  #iframe_cpu {
+    top: -192px;
+  }
+  #iframe_memory {
+    top: -192px;
+    left: 33%;
+  }
+  #iframe_disk {
+    top: -192px;
+    left: 66%;
+  }
+  span {
+    position: relative;
+    top: 270px;
+    left: 33%;
+    font-size: 20px;
+  }
+}
+.UsageTable {
+  .UsageAmount {
+    padding: 20px 0;
+    font-size: 24px;
+  }
+}
+</style>
+
+
+    <!-- <el-dropdown split-button>
+            {{searchName}}
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="InstanceId">虚拟主机ID=</el-dropdown-item>
+              <el-dropdown-item @click.native="InstanceName">虚拟主机名称=</el-dropdown-item>
+              <el-dropdown-item @click.native="InstanceId">系统镜像ID=</el-dropdown-item>
+              <el-dropdown-item @click.native="ImageName ">系统镜像名=</el-dropdown-item>
+              <el-dropdown-item @click.native="IPv4Address"> IPv4地址=</el-dropdown-item>
+              <el-dropdown-item @click.native="IPv6Address"> IPv6地址=</el-dropdown-item>
+              <el-dropdown-item @click.native="FlavorID"> 主机模板ID=</el-dropdown-item>
+              <el-dropdown-item @click.native="FlavorName"> 主机模板ID=</el-dropdown-item>
+              <el-dropdown-item @click.native="KeyPairName"> 密钥对名=</el-dropdown-item>
+              <el-dropdown-item @click.native="Status"> 状态=</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown> -->
+
+
+
+            <!-- metadata模块 元数据-->
+              <!-- <el-tab-pane label="元数据">
+                <el-row>此步骤允许您向实例添加元数据项。</el-row>
+                <el-row>可以通过将项从左列移动到右列来指定资源元数据。在左侧列中有来自Glance metadata Catalog的元数据定义。使用“Custom”选项添加元数据和您选择的键。</el-row>
+                <el-row :gutter="20">
+                  <el-col :span="11">
+                    <div class="AvTable">
+                      <div class="AvTableFiliter">
+                        <span>
+                          <h3>可用数据:</h3>
+                        </span>
+                        <span>
+                          <el-input placeholder="筛选"
+                                    v-model="createInstanceForm.metadata.Avdata"
+                                    size="medium"></el-input>
+                        </span>
+                      </div>
+                      <div class="AvTableCustom">
+                        <span>
+                          <el-input v-model="createInstanceForm.metadata.Avdata"
+                                    placeholder="Custom"
+                                    size="medium">
+                            <el-button slot="append"
+                                       icon="el-icon-plus"></el-button>
+                          </el-input>
+                        </span>
+                      </div>
+                      <div class="AvTableMessage">
+                        没有可用的元数据
+                      </div>
+                    </div>
+                  </el-col>
+                  <el-col :span="11">
+                    <div class="AvTable">
+                      <div class="AvTableFiliter">
+                        <span>
+                          <h3>现有的元数据:</h3>
+                        </span>
+                        <span>
+                          <el-input placeholder="筛选"
+                                    v-model="createInstanceForm.metadata.Avdata"
+                                    size="medium"></el-input>
+                        </span>
+                      </div>
+                      <div class="AvTableCustom">
+                        <span>123</span>
+                        <span>
+                          <el-input v-model="createInstanceForm.metadata.Avdata"
+                                    placeholder="Custom"
+                                    size="medium">
+                            <el-button slot="append"
+                                       icon="el-icon-minus"></el-button>
+                          </el-input>
+                        </span>
+                      </div>
+                      <div class="AvTableMessage">
+                        没有现有的元数据
+                      </div>
+                    </div>
+                  </el-col>
+                </el-row>
+                <el-row>
+                  <el-card style="background-color: hsl(0, 0%, 96%) border=1px #eee solid; ">
+                    单击每个项目以获取其描述。
+                  </el-card>
+                </el-row>
+              </el-tab-pane> -->
+
+    // 卷 http://192.168.106.45:8776/v2/be54dfd7dc65498984d1fc4ac44ae846/volumes? all_tenants=1
+    // var projectID = JSON.parse(sessionStorage.getItem("projectID"))
+    // var projectToken = JSON.parse(sessionStorage.getItem("projectToken"))
+    // var volumesData = await this.$http.get('http://' + document.location.hostname + ':8776/v2/' + projectID + '/volumes/detail', {
+    //   params: {
+    //     all_tenants: 1
+    //   },
+    //   headers: {
+    //     'X-Auth-token': projectToken,
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+
+    // 快照
+    // var snapshotsData = await this.$http.get('http://' + document.location.hostname + ':8776/v2/' + projectID + '/snapshots/detail', {
+    //   params: {
+    //     all_tenants: 1
+    //   },
+    //   headers: {
+    //     'X-Auth-token': projectToken,
+    //     'Content-Type': 'application/json'
+    //   }
+
+    // })
+         <!-- 登录表单区域 -->
+      <!-- <el-form ref="loginFormRef"
+               :model="loginForm"
+               :rules="loginFormRules"
+               label-width="0px"
+               class="login_form"> -->
+      <!-- 用户名 -->
+      <!-- <el-form-item prop="username">
+          <el-input v-model="loginForm.username"
+                    prefix-icon="iconfont icon-user"
+                    @keyup.enter.native="login"></el-input>
+        </el-form-item> -->
+      <!-- 密码 -->
+      <!-- <el-form-item prop="password">
+          <el-input v-model="loginForm.password"
+                    prefix-icon="iconfont icon-3702mima"
+                    type="password"
+                    @keyup.enter.native="login"></el-input>
+        </el-form-item> -->
+      <!-- 按钮区域 -->
+      <!-- <el-form-item class="btns">
+          <el-button type="primary"
+                     @click="login">登录</el-button>
+        </el-form-item>
+      </el-form> -->
